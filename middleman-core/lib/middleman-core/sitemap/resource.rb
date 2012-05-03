@@ -92,12 +92,6 @@ module Middleman::Sitemap
       @destination_paths << path
     end
     
-    # The template instance
-    # @return [Middleman::Sitemap::Template]
-    def template
-      @_template ||= ::Middleman::Sitemap::Template.new(self)
-    end
-    
     # Extension of the path (i.e. '.js')
     # @return [String]
     def ext

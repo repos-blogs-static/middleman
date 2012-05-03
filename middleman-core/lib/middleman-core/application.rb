@@ -134,12 +134,12 @@ module Middleman
   
     # Activate Data package
     register Middleman::CoreExtensions::Data
-  
-    # Parse YAML from templates
-    register Middleman::CoreExtensions::FrontMatter
 
     # Setup custom rendering
     register Middleman::CoreExtensions::Rendering
+  
+    # Parse YAML from templates
+    register Middleman::CoreExtensions::FrontMatter
   
     # Sitemap
     register Middleman::Sitemap
