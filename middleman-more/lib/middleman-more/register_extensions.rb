@@ -34,13 +34,13 @@ Middleman::Application.register Middleman::Renderers::Slim
 require "middleman-more/core_extensions/compass"
 Middleman::Application.register Middleman::CoreExtensions::Compass
 
-# Sprockets asset handling
-require "middleman-more/core_extensions/sprockets"
-Middleman::Application.register Middleman::CoreExtensions::Sprockets
-
 ### 
 # Setup Optional Extensions
 ###
+
+# Use Sprockets by default
+require "middleman-sprockets"
+Middleman::Application.register Middleman::Sprockets
 
 # CacheBuster adds a query string to assets in dynamic templates to avoid
 # browser caches failing to update to your new content.

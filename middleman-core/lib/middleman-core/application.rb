@@ -194,9 +194,6 @@ module Middleman
   
     # Initialize the Middleman project
     def initialize(&block)
-      # Current path defaults to nil, used in views.
-      self.current_path = nil
-    
       # Clear the static class cache
       cache.clear
     

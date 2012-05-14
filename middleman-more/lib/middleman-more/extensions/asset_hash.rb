@@ -1,8 +1,8 @@
-require 'digest/sha1'
 module Middleman::Extensions
   module AssetHash
     class << self
       def registered(app, options)
+        require 'digest/sha1'
         exts = options[:exts] || %w(.ico .manifest .jpg .jpeg .png .gif .js .css)
 
         app.ready do
@@ -28,19 +28,7 @@ module Middleman::Extensions
       def manipulate_resource_list(resources)
         resources.each do |resource|
           if @exts.include? resource.ext
-            # figure out the path Sprockets would use for this asset
-            if resource.ext == '.js'
-              sprockets_path = resource.path.sub(@app.js_dir,'').sub(/^\//,'')
-            elsif resource.ext == '.css'
-              sprockets_path = resource.path.sub(@app.css_dir,'').sub(/^\//,'')
-            end
-
-            # See if Sprockets knows about the file
-            asset = @app.sprockets.find_asset(sprockets_path) if sprockets_path
-
-            if asset # if it's a Sprockets asset, ask sprockets for its digest
-              digest = asset.digest[0..7]
-            elsif resource.template? # if it's a template, render it out
+            if resource.template? # if it's a template, render it out
               digest = Digest::SHA1.hexdigest(resource.render)[0..7]
             else # if it's a static file, just hash it
               digest = Digest::SHA1.file(resource.source_file).hexdigest[0..7]

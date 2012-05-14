@@ -45,6 +45,7 @@
 * `layout`, `ignore`, and `directory_index` can be set from front matter.
 * JavaScript and CSS are minified no matter where they are in the site, including in inline code blocks.
 * Files with just a template extension get output with the correct exension (foo.erb => foo.html)
+* Moved Sprockets into an extension
 
 2.0.14
 ====
